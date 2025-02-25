@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/sign_up_page.dart';
-import 'package:onlineshop/view/home_page.dart';
+import 'package:onlineshop/view/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+import 'home_page.dart';
+
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _parolController = TextEditingController();
 
   @override
@@ -22,18 +24,18 @@ class LoginPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  height: 50.0,
+                  height: 40.0,
                 ),
                 Center(child: Image.asset("assets/images/login_img.png")),
                 SizedBox(
                   height: 50.0,
                 ),
                 Text(
-                  'Login to e-Shop',
+                  'Sing Up to e-Shop',
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 50.0,
+                  height: 30.0,
                 ),
                 Form(
                     key: _formKey,
@@ -46,8 +48,6 @@ class LoginPage extends StatelessWidget {
                             decoration: InputDecoration(
                               hintText: 'Username',
                               hintStyle: TextStyle(color: Color(0xFFA8AFB9)),
-                              //  fillColor: Color(0x3232470D),
-                              //  filled: true,
                               prefixIcon: Icon(Icons.person),
                               prefixIconColor: Color(0xFFA8AFB9),
                               border: InputBorder.none,
@@ -71,12 +71,37 @@ class LoginPage extends StatelessWidget {
                           elevation: 5,
                           shadowColor: Colors.white,
                           child: TextFormField(
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              hintStyle: TextStyle(color: Color(0xFFA8AFB9)),
+                              prefixIcon: Icon(Icons.email),
+                              prefixIconColor: Color(0xFFA8AFB9),
+                              border: InputBorder.none,
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  borderSide: BorderSide.none),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Email kiriting';
+                              }
+                              return null;
+                            },
+                            controller: _emailController,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Card(
+                          elevation: 5,
+                          shadowColor: Colors.white,
+                          child: TextFormField(
                             obscureText: true,
                             decoration: InputDecoration(
                               hintText: 'Password',
                               hintStyle: TextStyle(color: Color(0xFFA8AFB9)),
-                              // fillColor: Color(0x3232470D),
-                              // filled: true,
                               prefixIcon: Icon(Icons.lock),
                               prefixIconColor: Color(0xFFA8AFB9),
                               border: InputBorder.none,
@@ -94,9 +119,8 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 16.0,
+                          height: 10.0,
                         ),
-                        Text('Forgot Password?'),
                         Container(
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(vertical: 20.0),
@@ -115,7 +139,7 @@ class LoginPage extends StatelessWidget {
                                 child: Container(
                                     padding: EdgeInsets.all(18.0),
                                     child: Text(
-                                      'Login',
+                                      'Sign Up',
                                       style: TextStyle(fontSize: 16.0),
                                     )))),
                       ],
@@ -157,16 +181,16 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don’t have an account?'),
+                    Text('Already have account! '),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpPage()));
+                                builder: (context) => LoginPage()));
                       },
                       child: Text(
-                        'Sign Up',
+                        'Login',
                         style: TextStyle(color: Color(0xFFFC6828)),
                       ),
                     )
