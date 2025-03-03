@@ -75,8 +75,6 @@ class LoginPage extends StatelessWidget {
                             decoration: InputDecoration(
                               hintText: 'Password',
                               hintStyle: TextStyle(color: Color(0xFFA8AFB9)),
-                              // fillColor: Color(0x3232470D),
-                              // filled: true,
                               prefixIcon: Icon(Icons.lock),
                               prefixIconColor: Color(0xFFA8AFB9),
                               border: InputBorder.none,

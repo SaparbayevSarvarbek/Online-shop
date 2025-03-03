@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:onlineshop/view/home_page.dart';
 import 'package:onlineshop/view/login_page.dart';
 
-void main() {
+import 'database/database_helper.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.instance.insertInitialProducts();
   runApp(const MyApp());
 }
 
